@@ -14,7 +14,7 @@ public class PlayerMove : MonoBehaviour
     #endregion
     #region Public 变量
     public Animator playerAnimator;//角色移动状态机
-    public float playerSpeed;//人物速度
+    public float playerSpeed=0f;//人物速度
     Vector3 move;//移动的距离
     Vector3 groundNormal;//地面法线
     float turnAmount;//人物旋转角度
@@ -24,7 +24,7 @@ public class PlayerMove : MonoBehaviour
     #region Public 方法
     public void Start()
     {
-        playerAnimator.SetFloat("speed",0f);
+        playerAnimator.SetFloat("speed", playerSpeed);
     }
     public void Update()
     {
@@ -83,11 +83,11 @@ public class PlayerMove : MonoBehaviour
     //人物移动
     private void Move(Vector3 move)
     {
-    playerSpeed = 2f;
+        playerSpeed = 2f;
        playerAnimator.SetFloat("speed", playerSpeed);
         if (move.magnitude>1f)//如果向量的模大于1
         {
-            move.Normalize();//向量归一化
+            move.Normalize();//向量归一化、
         }
         //将世界坐标的move转化成本地坐标的move
         move = transform.InverseTransformDirection(move);
