@@ -301,6 +301,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\_script\ButtonType.cs" />
+    <Compile Include="Assets\_script\GrinderMove.cs" />
     <Compile Include="Assets\_script\PlayerMove.cs" />
     <Compile Include="Assets\SapphiArt\SapphiArtchan\Scripts\AnimationManagerUI.cs" />
     <Compile Include="Assets\SapphiArt\SapphiArtchan\Scripts\SapphiArtChan_AnimManager.cs" />
