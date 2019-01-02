@@ -8,11 +8,11 @@ public class ButtonType : MonoBehaviour, IPointerDownHandler, IPointerUpHandler,
 {
     #region Private 变量
     // 延迟时间
-    private float delay = 0.1f;
+    protected float delay = 0.05f;
     // 按钮是否是按下状态
-    private bool isDown = false;
+    protected bool isDown = false;
     // 按钮最后一次是被按住状态时候的时间
-    private float lastIsDownTime;
+    protected float lastIsDownTime;
     #endregion
     #region Protected 变量
 
@@ -23,7 +23,7 @@ public class ButtonType : MonoBehaviour, IPointerDownHandler, IPointerUpHandler,
 
     #region Public 方法
     //根据类型调用不同的方法
- public void SwitchBtn()
+ public virtual void SwitchBtn()
     {
         switch (buttonType)
         {
@@ -68,20 +68,17 @@ public void OnPointerDown(PointerEventData eventData)
     }
     #endregion
     #region Private 方法
-    private void Update()
+    protected void Update()
     {
         if (isDown)
         {
             // 当前时间 -  按钮最后一次被按下的时间 > 延迟时间0.2秒
             if (Time.time - lastIsDownTime > delay)
             {
-                SwitchBtn();
                 // 触发长按方法
-                // Debug.Log("长按");
-                //movement.Istance.DownButton();
+                SwitchBtn();                
                 // 记录按钮最后一次被按下的时间
                 lastIsDownTime = Time.time;
-
             }
         }
     }
@@ -90,7 +87,7 @@ public void OnPointerDown(PointerEventData eventData)
     #region Protected 方法
 
     #endregion
-public enum ButtonDownType
+public  enum ButtonDownType
 {
     None=0,
     girindingLeft,//砂轮左移

@@ -23,6 +23,7 @@ public class GrinderMove : MonoBehaviour
     public Transform grindingShelfUpMax;
     public Transform workSpaceLeftMax;
     public Transform workSpaceRightMax;
+    public Canvas canvas;
     private static GrinderMove instance;
     public static GrinderMove Instance
     {
@@ -117,12 +118,33 @@ public   void WorkSpaceRight()
     private void Awake()
     {
         instance = this;
+        canvas.gameObject.SetActive(false);
     }
     private void Update()
     {
         GrindingWheelRotate();
     }
-
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.tag=="Player")
+        {
+            canvas.gameObject.SetActive(true);
+        }
+    }
+    private void OnTriggerStay(Collider other)
+    {
+        if (other.gameObject.tag == "Player")
+        {
+            canvas.gameObject.SetActive(true);
+        }
+    }
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.gameObject.tag == "Player")
+        {
+            canvas.gameObject.SetActive(false);
+        }
+    }
     #endregion
     #region Protected 方法
 
